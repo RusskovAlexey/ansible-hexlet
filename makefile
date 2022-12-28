@@ -5,3 +5,6 @@ touchfile:
 
 pingall:
 	ansible all -i inventory.ini -u alex -m ping
+
+tags:
+	ansible-playbook --check playbook.yml -i inventory.ini -t add-user
