@@ -8,10 +8,39 @@
         state: present
         update_cache: yes
       become: yes
+      tags: install-mc
 
     - name: remove mc
       ansible.builtin.apt: 
         name: mc
         state: absent
-      become: yes  
+      become: yes
+      tags: remove-mc
 
+    - name: update_cache
+      ansible.builtin.apt:
+        update_cache: yes
+      become: yes
+      tags: update-cache
+    
+    - name: install Make
+      ansible.builtin.apt:
+        name: make
+        state: present
+        update_cache: yes
+      become: yes
+      tags: install-make
+
+        #    - name: install Nodejs
+        # ansible.builtin.apt:
+        # name: Node
+        # state: present
+        # become: yes
+        # tags: install-Nodejs
+
+    - name: add user(arya, sansa, tirion) 
+      ansible.builtin.user:
+        name: arya
+        comment: Arya Jona
+      become: yes
+      tags: add-user    
