@@ -1,0 +1,17 @@
+- hosts: all
+
+  tasks:
+    - name: install mc
+      # apt-get update && apt-get install mc
+      ansible.builtin.apt: # имя модуля Ansible
+        name: mc
+        state: present
+        update_cache: yes
+      become: yes
+
+    - name: remove mc
+      ansible.builtin.apt: 
+        name: mc
+        state: absent
+      become: yes  
+
